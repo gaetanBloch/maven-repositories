@@ -25,15 +25,20 @@
     </dependency>
   </dependencies>
 
-  <repositories>
-    <repository>
-      <id>redhat-ja</id>
-      <url>https://maven.repository.redhat.com/ga/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  <profiles>
+    <profile>
+      <id>jboss</id>
+      <repositories>
+        <repository>
+          <id>redhat-ga</id>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
 
 </project>
 
