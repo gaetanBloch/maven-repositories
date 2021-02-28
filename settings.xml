@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <!--
+    Deprecated since HTTP deprecation (January 2020)!
+    -->
+    <!--<mirror>
+      <id>uk.maven.org</id>
+      <name>UK Central</name>
+      <url>http://uk.maven.org/maven2</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>-->
+    <!--
+    Bintray, JCenter etc. will be shutdown by JFrog in May 2021!
+    -->
+    <!--<mirror>
+      <id>JCenter</id>
+      <url>https://jcenter.bintray.com/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>-->
+    <mirror>
+      <id>central</id>
+      <name>central</name>
+      <url>http://localhost:8081/repository/nexus-group/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <servers>
+
+    <!--Oracle-->
+    <server>
+      <id>maven.oracle.com</id>
+      <username>gaetan.bloch@gmail.com</username>
+      <password>{4fBJAiwk24AHbUW/CdSgakfUGi7Czv8Wl5SNiYj0+cs=}</password>
+      <configuration>
+        <basicAuthScope>
+          <host>ANY</host>
+          <port>ANY</port>
+          <realm>OAM 11g</realm>
+        </basicAuthScope>
+        <httpConfiguration>
+          <all>
+            <params>
+              <property>
+                <name>http.protocol.allow-circular-redirects</name>
+                <value>%b,true</value>
+              </property>
+            </params>
+          </all>
+        </httpConfiguration>
+      </configuration>
+    </server>
+
+    <!--Nexus-->
+    <server>
+      <id>nexus-snapshot</id>
+      <username>admin</username>
+      <password>{EBmUWUAj+SUH825mJiINHKfhfFRXfaAq5Zlkm2UDdTQ=}</password>
+    </server>
+    <server>
+      <id>nexus-release</id>
+      <username>admin</username>
+      <password>{EBmUWUAj+SUH825mJiINHKfhfFRXfaAq5Zlkm2UDdTQ=}</password>
+    </server>
+  </servers>
+
+  <profiles>
+    <profile>
+      <id>jboss</id>
+      <repositories>
+        <repository>
+          <id>redhat-ga</id>
+          <url>https://maven.repository.redhat.com/ga/</url>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>jboss</activeProfile>
+  </activeProfiles>
+</settings>
