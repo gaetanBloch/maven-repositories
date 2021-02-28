@@ -6,7 +6,7 @@
 
   <groupId>com.gbloch</groupId>
   <artifactId>maven-repositories</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +17,6 @@
   </properties>
 
   <dependencies>
-
     <!--JBoss-->
 <!--    <dependency>-->
 <!--      <groupId>org.jboss.ejb3</groupId>-->
@@ -41,7 +40,6 @@
   </dependencies>
 
   <repositories>
-
     <!--Oracle-->
 <!--    <repository>-->
 <!--      <id>maven.oracle.com</id>-->
@@ -53,34 +51,26 @@
 <!--        <updatePolicy>always</updatePolicy>-->
 <!--      </releases>-->
 <!--    </repository>-->
-
-    <!--Nexus-->
-<!--    <repository>-->
-<!--      <id>nexus-snapshot</id>-->
-<!--      <url>http://localhost:8081/repository/nexus-snapshot/</url>-->
-<!--      <snapshots>-->
-<!--        <enabled>true</enabled>-->
-<!--      </snapshots>-->
-<!--    </repository>-->
-<!--    <repository>-->
-<!--      <id>nexus-release</id>-->
-<!--      <url>http://localhost:8081/repository/nexus-release/</url>-->
-<!--      <releases>-->
-<!--        <enabled>true</enabled>-->
-<!--      </releases>-->
-<!--    </repository>-->
   </repositories>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>nexus-snapshot</id>
-      <url>http://localhost:8081/repository/nexus-snapshot/</url>
-    </snapshotRepository>
-    <repository>
-      <id>nexus-release</id>
-      <url>http://localhost:8081/repository/nexus-release/</url>
-    </repository>
-  </distributionManagement>
+  <profiles>
+    <profile>
+      <id>nexus</id>
+      <distributionManagement>
+        <snapshotRepository>
+          <id>nexus-snapshot</id>
+          <url>http://localhost:8081/repository/nexus-snapshot/</url>
+        </snapshotRepository>
+        <repository>
+          <id>nexus-release</id>
+          <url>http://localhost:8081/repository/nexus-release/</url>
+        </repository>
+      </distributionManagement>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
 
 </project>
 
